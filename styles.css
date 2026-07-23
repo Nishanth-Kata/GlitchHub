@@ -1142,6 +1142,55 @@ a:hover {
     line-height: 1.5;
 }
 
+.install-note {
+    margin-top: 1rem;
+    padding: 0.85rem 0.95rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.22);
+    text-align: left;
+}
+
+.install-note__title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.45rem;
+}
+
+.install-note__text {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin: 0.35rem 0;
+}
+
+.install-cmd {
+    display: block;
+    margin: 0.55rem 0;
+    padding: 0.55rem 0.65rem;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 0.76rem;
+    word-break: break-all;
+    user-select: all;
+}
+
+.signin-callout--team {
+    margin-top: 0.85rem;
+}
+
+.how-subtitle {
+    margin-top: 1.5rem;
+    margin-bottom: 0.65rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
 .how-title {
     margin-top: 3rem;
     margin-bottom: 1rem;

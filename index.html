@@ -218,26 +218,50 @@
                         <span class="btn-label">Download for macOS</span>
                     </a>
                     <p class="fine-print">
-                        Apple Silicon DMG &middot; unsigned (right-click &rarr; Open on first launch)
+                        Apple Silicon DMG &middot; unsigned &middot; ~135 MB
                     </p>
+                    <div class="install-note">
+                        <p class="install-note__title">If macOS blocks the app</p>
+                        <p class="install-note__text">
+                            After copying GlitchHub to <strong>Applications</strong>, run in Terminal:
+                        </p>
+                        <code class="install-cmd">xattr -cr /Applications/GlitchHub.app</code>
+                        <p class="install-note__text">
+                            Or right-click the app &rarr; <strong>Open</strong> on first launch.
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="signin-callout glass" role="note">
                 <span class="signin-callout-dot" aria-hidden="true"></span>
                 <p>
                     <strong>No account needed on this website.</strong>
-                    After installing, open GlitchHub, complete
-                    <strong>Setup Google OAuth</strong>, then tap
+                    After installing, open GlitchHub and tap
                     <strong>Continue with Google</strong> to connect your Drive.
                 </p>
             </div>
+            <div class="signin-callout signin-callout--team glass" role="note">
+                <span class="signin-callout-dot" aria-hidden="true"></span>
+                <p>
+                    <strong>Teams:</strong> your admin configures Google OAuth once and deploys
+                    <code>desktop-config.json</code> to every machine (GPO / Intune / Jamf).
+                    End users only install and sign in &mdash; no OAuth wizard.
+                </p>
+            </div>
             <h3 class="how-title">First launch</h3>
+            <h4 class="how-subtitle">End users (org already configured)</h4>
             <ol>
                 <li>Install and open GlitchHub. It runs a local server on port <code>49152</code>.</li>
-                <li>Click <strong>Setup Google OAuth</strong> and add your Google Desktop client ID to <code>desktop-config.json</code>.</li>
-                <li>Restart GlitchHub, then click <strong>Continue with Google</strong>. Your browser opens for consent.</li>
+                <li>Click <strong>Continue with Google</strong>. Your browser opens for consent.</li>
                 <li>After allowing access, control returns to the app.</li>
                 <li>Set up your Project / Task / Round in the sidebar, then upload a screenshot.</li>
+            </ol>
+            <h4 class="how-subtitle">IT admin (one-time, for the whole organization)</h4>
+            <ol>
+                <li>Use your org&rsquo;s Google Cloud OAuth client (Client ID + Client Secret for Web clients).</li>
+                <li>Ensure redirect URI <code>http://127.0.0.1:49152/auth/google/callback/sqlite</code> is allowed.</li>
+                <li>Deploy <code>desktop-config.json</code> to <code>%APPDATA%\GlitchHub\</code> (Windows) or <code>~/Library/Application Support/GlitchHub/</code> (Mac) before users launch.</li>
+                <li>Optional: set <code>ALLOWED_EMAIL_DOMAINS</code> to restrict sign-in to your company.</li>
             </ol>
         </div>
     </section>
