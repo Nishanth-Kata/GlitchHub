@@ -117,4 +117,28 @@
     if (yearEl) {
         yearEl.textContent = String(new Date().getFullYear());
     }
+
+    /* ---------- Latest release download links (includes pre-releases) ---------- */
+    var releaseRepo = 'Nishanth-Kata/GlitchHub';
+    var winLink = document.querySelector('[data-download-win]');
+    var macLink = document.querySelector('[data-download-mac]');
+
+    if (winLink || macLink) {
+        fetch('https://api.github.com/repos/' + releaseRepo + '/releases?per_page=1')
+            .then(function (response) {
+                if (!response.ok) throw new Error('release lookup failed');
+                return response.json();
+            })
+            .then(function (releases) {
+                if (!releases || !releases.length) return;
+                var tag = releases[0].tag_name;
+                var base =
+                    'https://github.com/' + releaseRepo + '/releases/download/' + tag + '/';
+                if (winLink) winLink.href = base + 'GlitchHub-Setup-win.exe';
+                if (macLink) macLink.href = base + 'GlitchHub-mac-arm64.dmg';
+            })
+            .catch(function () {
+                /* keep fallback hrefs baked into index.html */
+            });
+    }
 })();
