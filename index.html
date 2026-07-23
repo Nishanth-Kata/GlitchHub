@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GlitchHub - QA evidence capture and share</title>
+    <meta name="description" content="Capture, organize and share QA evidence. Runs locally on your machine. Uses your own Google Drive." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <div class="site-bg" aria-hidden="true">
+        <span class="float-token t1">{ }</span>
+        <span class="float-token t2">0x4F2A</span>
+        <span class="float-token t3">&lt;/&gt;</span>
+        <span class="float-token t4">// sync</span>
+        <span class="float-token t5">[DRIVE]</span>
+        <span class="float-token t6">49152</span>
+        <span class="float-token t7">PKCE</span>
+        <span class="float-token t8">01 10 11</span>
+        <span class="float-token t9">{ }</span>
+        <span class="float-token t10">0xFF</span>
+        <span class="float-bracket b1">[</span>
+        <span class="float-bracket b2">]</span>
+        <span class="float-ring r1"></span>
+        <span class="float-ring r2"></span>
+        <span class="float-glitch-line g1"></span>
+        <span class="float-glitch-line g2"></span>
+        <span class="float-glitch-line g3"></span>
+    </div>
+
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="./" data-text="GlitchHub">GlitchHub</a>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#how">How it works</a>
+                <a href="#download">Download</a>
+                <a href="#enterprise">Enterprise</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg" aria-hidden="true">
+            <div class="grid-layer"></div>
+            <div class="scanlines"></div>
+            <span class="glitch-bar bar-1"></span>
+            <span class="glitch-bar bar-2"></span>
+            <span class="glitch-bar bar-3"></span>
+            <div class="hero-glow glow-1"></div>
+            <div class="hero-glow glow-2"></div>
+            <span class="float-token ht1">sqlite</span>
+            <span class="float-token ht2">127.0.0.1</span>
+            <span class="float-token ht3">// upload</span>
+            <span class="float-bracket hb1">&#123;</span>
+            <span class="float-bracket hb2">&#125;</span>
+        </div>
+        <div class="container hero-content">
+            <p class="hero-eyebrow">// v3.0.0-alpha &nbsp;&middot;&nbsp; local-first evidence capture</p>
+            <h1 class="hero-title" data-text="GlitchHub">GlitchHub</h1>
+            <p class="hero-tagline">QA evidence, captured and shared <span class="accent">without a server.</span></p>
+            <p class="lede">
+                Runs entirely on your machine. Screenshots, videos, notes -
+                organized by project, task, and round, stored in your own Google Drive.
+            </p>
+            <div class="cta-row">
+                <a class="btn primary" href="#download">
+                    <span class="btn-label">Get GlitchHub</span>
+                    <span class="btn-arrow" aria-hidden="true">&darr;</span>
+                </a>
+                <a class="btn ghost" href="#enterprise">
+                    <span class="btn-label">Enterprise deployment</span>
+                </a>
+            </div>
+            <div class="hero-meta">
+                <p class="hero-note">Pick your platform below &mdash; Windows and macOS installers available.</p>
+                <p class="hero-signin-note">Set up Google OAuth inside the app after install, then sign in.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container reveal">
+            <p class="section-label">// 01 &middot; features</p>
+            <h2 class="section-title">Built for local speed</h2>
+        </div>
+        <div class="container features-grid reveal-group reveal-scale">
+            <div class="feature glass">
+                <h3>Local first</h3>
+                <p>
+                    Everything runs on your laptop. No website signup, no server,
+                    no data hop through us.
+                </p>
+            </div>
+            <div class="feature glass">
+                <h3>Your Google Drive</h3>
+                <p>
+                    Screenshots and evidence land in your own Drive. You keep the data,
+                    you control the sharing.
+                </p>
+            </div>
+            <div class="feature glass">
+                <h3>Project structure</h3>
+                <p>
+                    Project / Task / Round folders auto-created. Media tray uploads
+                    directly into the right folder.
+                </p>
+            </div>
+            <div class="feature glass">
+                <h3>Enterprise ready</h3>
+                <p>
+                    IT can pre-configure OAuth via MDM so employees never see a setup
+                    screen. Uses your Google Workspace.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how" class="section how">
+        <div class="container reveal">
+            <p class="section-label">// 02 &middot; workflow</p>
+            <h2>How it works</h2>
+            <p class="section-lede">
+                From download to first upload in a few minutes.
+                No website signup. Install the app, set up Google OAuth, then sign in.
+            </p>
+        </div>
+        <div class="container steps-grid reveal-group reveal-left">
+            <div class="step glass">
+                <div class="step-number">01</div>
+                <h3>Download &amp; install</h3>
+                <p>
+                    Download for your platform and run the installer.
+                    GlitchHub starts a local server on <code>127.0.0.1:49152</code>.
+                    Nothing leaves your machine until you sign in.
+                </p>
+            </div>
+            <div class="step glass">
+                <div class="step-number">02</div>
+                <h3>Setup Google OAuth</h3>
+                <p>
+                    On first launch, click <strong>Setup Google OAuth</strong> and add your
+                    Google Cloud Desktop client ID to <code>desktop-config.json</code>.
+                    Restart the app when done.
+                </p>
+            </div>
+            <div class="step glass">
+                <div class="step-number">03</div>
+                <h3>Connect Google Drive</h3>
+                <p>
+                    Click <strong>Continue with Google</strong>. Your browser opens for
+                    a one-time consent. Tokens are encrypted and stored locally in
+                    SQLite.
+                </p>
+            </div>
+            <div class="step glass">
+                <div class="step-number">04</div>
+                <h3>Capture &amp; organize</h3>
+                <p>
+                    Create your Project / Task / Round. Drop screenshots into the media
+                    tray. Everything is auto-uploaded into the right Drive folder,
+                    ready to share.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="section download">
+        <div class="container reveal">
+            <p class="section-label">// 03 &middot; get it</p>
+            <h2>Download GlitchHub</h2>
+            <div class="download-cards">
+                <div class="download-card glass">
+                    <div class="platform-icon platform-icon-windows" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+                            <title>Windows</title>
+                            <rect x="1" y="1" width="10" height="10" fill="#0078D4"/>
+                            <rect x="13" y="1" width="10" height="10" fill="#0078D4"/>
+                            <rect x="1" y="13" width="10" height="10" fill="#0078D4"/>
+                            <rect x="13" y="13" width="10" height="10" fill="#0078D4"/>
+                        </svg>
+                    </div>
+                    <h3>Windows 10 / 11</h3>
+                    <p>NSIS installer &middot; x64</p>
+                    <a
+                        class="btn primary"
+                        href="https://github.com/KN-6823/GlitchHub-website/releases/latest/download/GlitchHub-Setup-win.exe"
+                        download="GlitchHub-Setup-win.exe"
+                    >
+                        <span class="btn-label">Download for Windows</span>
+                    </a>
+                    <p class="fine-print">~103 MB &middot; Windows 10 / 11 x64</p>
+                </div>
+                <div class="download-card download-card-mac glass">
+                    <div class="platform-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    </div>
+                    <h3>macOS 12+</h3>
+                    <p>Apple Silicon (M1 / M2 / M3)</p>
+                    <a
+                        class="btn primary"
+                        href="https://github.com/KN-6823/GlitchHub-website/releases/latest/download/GlitchHub-mac-arm64.dmg"
+                        download="GlitchHub-mac-arm64.dmg"
+                    >
+                        <span class="btn-label">Download for macOS</span>
+                    </a>
+                    <p class="fine-print">
+                        Apple Silicon DMG &middot; unsigned (right-click &rarr; Open on first launch)
+                    </p>
+                </div>
+            </div>
+            <div class="signin-callout glass" role="note">
+                <span class="signin-callout-dot" aria-hidden="true"></span>
+                <p>
+                    <strong>No account needed on this website.</strong>
+                    After installing, open GlitchHub, complete
+                    <strong>Setup Google OAuth</strong>, then tap
+                    <strong>Continue with Google</strong> to connect your Drive.
+                </p>
+            </div>
+            <h3 class="how-title">First launch</h3>
+            <ol>
+                <li>Install and open GlitchHub. It runs a local server on port <code>49152</code>.</li>
+                <li>Click <strong>Setup Google OAuth</strong> and add your Google Desktop client ID to <code>desktop-config.json</code>.</li>
+                <li>Restart GlitchHub, then click <strong>Continue with Google</strong>. Your browser opens for consent.</li>
+                <li>After allowing access, control returns to the app.</li>
+                <li>Set up your Project / Task / Round in the sidebar, then upload a screenshot.</li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="enterprise" class="section enterprise">
+        <div class="container reveal reveal-right">
+            <p class="section-label">// 04 &middot; for teams</p>
+            <h2>Enterprise deployment</h2>
+            <p>
+                Deploy GlitchHub across your organization with your own Google
+                Workspace OAuth client - no per-user setup, full audit trail in
+                your Google Cloud project.
+            </p>
+            <ul>
+                <li>Create a Desktop-application OAuth client in Google Cloud Console</li>
+                <li>Distribute a <code>desktop-config.json</code> via GPO / Intune / Jamf</li>
+                <li>Users install once, launch, and sign in - no wizard needed</li>
+            </ul>
+            <p>
+                <a class="btn ghost" href="#download">View download options</a>
+            </p>
+        </div>
+    </section>
+
+    <section id="faq" class="section">
+        <div class="container faq reveal">
+            <p class="section-label">// 05 &middot; questions</p>
+            <h2>FAQ</h2>
+            <details class="glass">
+                <summary>Where is my data stored?</summary>
+                <p>
+                    Screenshots and evidence are uploaded to your Google Drive.
+                    Auth tokens are stored encrypted in a local SQLite database
+                    at <code>%APPDATA%\GlitchHub\db\auth.db</code>.
+                </p>
+            </details>
+            <details class="glass">
+                <summary>Do you host anything?</summary>
+                <p>
+                    We host this landing page and the download binary. That's it.
+                    The app itself talks only to Google APIs and your local machine.
+                </p>
+            </details>
+            <details class="glass">
+                <summary>Can I use my own Google OAuth credentials?</summary>
+                <p>
+                    Yes. Open Settings inside the app or use the enterprise setup
+                    wizard on the Welcome screen. See the
+                    <a href="#enterprise">Enterprise section</a>
+                    for details.
+                </p>
+            </details>
+            <details class="glass">
+                <summary>What port does GlitchHub use?</summary>
+                <p>
+                    <code>127.0.0.1:49152</code>. If another app is using that port,
+                    GlitchHub will refuse to start. Close the conflicting app and try again.
+                </p>
+            </details>
+            <details class="glass">
+                <summary>How do I update?</summary>
+                <p>
+                    Installed GlitchHub checks for updates automatically on launch.
+                    When a new version is available, a card appears in the bottom-right
+                    corner of the app — click <strong>Update</strong>, then
+                    <strong>Restart to install</strong>. You can also open
+                    <strong>Settings → Check for updates</strong>.
+                </p>
+            </details>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>DevelopeD By KN &middot; &copy; <span id="footer-year">2026</span></p>
+            <p>
+                <a href="#download">Download</a>
+                &middot;
+                <a href="#enterprise">Enterprise</a>
+                &middot;
+                <a href="#faq">FAQ</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="./scripts.js" defer></script>
+</body>
+</html>
