@@ -1,10 +1,10 @@
 # GlitchHub — public website
 
-Static landing page for [GlitchHub Desktop](https://github.com/KN-6823/GlitchHub).
+Static landing page and public downloads for GlitchHub Desktop.
 
-- **Live site:** https://kn-6823.github.io/GlitchHub-website/
-- **Downloads:** [Releases](https://github.com/KN-6823/GlitchHub-website/releases/latest)
+- **Live site:** https://kn-6823.github.io/GlitchHub/
+- **Downloads:** [Releases](https://github.com/KN-6823/GlitchHub/releases/latest)
 
-This repository is **public** and contains only marketing HTML/CSS/JS — no application source code.
+This repository is **public** and contains only marketing HTML/CSS/JS.
 
-The desktop app is built and released from the private `GlitchHub` monorepo; CI copies installers here.
+The desktop app is built from the private [`GlitchHub-Dashboard`](https://github.com/KN-6823/GlitchHub-Dashboard) repo; CI copies installers here on each release tag.
