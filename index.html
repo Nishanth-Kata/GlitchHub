@@ -3,15 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GlitchHub - Local-first media capture and share</title>
+    <title>GlitchHub – Capture, Sync &amp; Collaborate</title>
     <meta name="description" content="Capture, organize, and share visual evidence. Runs locally on your machine. Uses your own Google Drive." />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
         rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=3.7.7" />
+    <link rel="stylesheet" href="./styles.css?v=3.9.8" />
     <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -73,11 +75,11 @@
             <span class="float-bracket hb2">&#125;</span>
         </div>
         <div class="container hero-content">
-            <p class="hero-eyebrow">// v3.0.0-alpha &nbsp;&middot;&nbsp; intelligent desktop workspace</p>
+            <p class="hero-eyebrow">// v3.0.0-alpha &nbsp;&middot;&nbsp; intelligent workspace</p>
             <h1 class="hero-title" data-text="GlitchHub">GlitchHub</h1>
-            <p class="hero-tagline">Visual documents, notes, and media &mdash; captured <span class="accent">without a server.</span></p>
+            <p class="hero-tagline">Visual notes, media, and task hierarchies &mdash; synchronized <span class="accent">directly to Google Drive.</span></p>
             <p class="lede">
-                A private, high-performance collaborative workspace. Write rich documents, catalog screenshots, and organize tasks—stored securely on your device with zero database servers.
+                A high-performance workspace designed for individuals and teams. Capture rich notes, record screen evidence, and organize tasks effortlessly.
             </p>
             <div class="cta-row">
                 <a class="btn primary" href="#download">
@@ -95,8 +97,11 @@
     <section id="features" class="section">
         <div class="features-wrapper">
             <div class="container reveal">
-                <p class="section-label">// 01 &middot; features</p>
-                <h2 class="section-title">Smart Desktop Workspace</h2>
+                <p class="section-label">// 01 &middot; capability</p>
+                <h2 class="section-title">Smart Workspace Architecture</h2>
+                <p class="section-lede">
+                    Everything you need to document, track, and sync your engineering and product work.
+                </p>
             </div>
             <div class="container features-grid reveal-group reveal-scale">
                 <div class="feature glass theme-purple">
@@ -107,9 +112,9 @@
                             </svg>
                         </div>
                     </div>
-                    <h3>Local Document Engine</h3>
+                    <h3>Structured Notes Engine</h3>
                     <p>
-                        Everything runs locally on your laptop. Write rich documents, plan tasks, and catalog notes securely on your machine. Your database resides on your own device.
+                        Write rich documents, plan tasks, and catalog notes securely on your machine with fast local performance.
                     </p>
                 </div>
                 <div class="feature glass theme-blue">
@@ -122,7 +127,7 @@
                     </div>
                     <h3>Direct Cloud Sync</h3>
                     <p>
-                        Your documents and media sync straight to your own Google Drive. Enjoy the convenience of cloud storage without third-party servers or subscription lock-in.
+                        Your documents and media sync straight to your own Google Drive. Enjoy the convenience of cloud storage without third-party server lock-in.
                     </p>
                 </div>
                 <div class="feature glass theme-green">
@@ -161,7 +166,7 @@
             <p class="section-label">// 02 &middot; workflow</p>
             <h2>How it works</h2>
             <p class="section-lede">
-                Get up and running in just a few clicks. GlitchHub runs locally on your machine and syncs files directly to your company's Google Drive storage without any complex setups.
+                Get up and running in just a few clicks. GlitchHub runs on your device and syncs files directly to your Google Drive storage without complex setups.
             </p>
         </div>
         <div class="container workflow-horizontal reveal" style="margin-top: 2rem;">
@@ -220,7 +225,7 @@
                     <div class="viewer-text">
                         <span class="step-tag">// 01 &middot; INITIAL SETUP</span>
                         <h3>Download GlitchHub</h3>
-                        <p>Get the installer package for your operating system (available for Windows and macOS) and complete the simple local installation process on your device.</p>
+                        <p>Get the installer package for your operating system (available for Windows and macOS) and complete the simple installation process on your device.</p>
                     </div>
                 </div>
 
@@ -262,7 +267,7 @@
                     <div class="viewer-text">
                         <span class="step-tag">// 04 &middot; WORKSPACE STRUCTURE</span>
                         <h3>Set Up Workspace</h3>
-                        <p>Initialize project workspace folders and nesting task categories directly from the local client sidebar. Keep all visual files, notes, and tasks structured properly.</p>
+                        <p>Initialize project workspace folders and nesting task categories directly from the sidebar. Keep all visual files, notes, and tasks structured properly.</p>
                     </div>
                 </div>
 
@@ -276,7 +281,7 @@
                     <div class="viewer-text">
                         <span class="step-tag">// 05 &middot; EVIDENCE CAPTURE</span>
                         <h3>Capture or Drag Files</h3>
-                        <p>Write rich text notes, snap quick screenshots, record active screen videos, or drag existing asset files directly into the client tray to organize them under the current active task.</p>
+                        <p>Write rich text notes, snap quick screenshots, record active screen videos, or drag existing asset files directly into the tray to organize them under the current active task.</p>
                     </div>
                 </div>
 
@@ -354,9 +359,7 @@
                     >
                         <span class="btn-label">Download for macOS</span>
                     </a>
-                    <p class="fine-print">
-                        Apple Silicon DMG &middot; unsigned &middot; ~95 MB
-                    </p>
+                    <p class="fine-print">~95 MB &middot; Apple Silicon (.dmg)</p>
                     <div class="install-note">
                         <p class="install-note__title">If Gatekeeper blocks launch</p>
                         <p class="install-note__text">
@@ -412,7 +415,7 @@
                             <span>Connected</span>
                         </div>
                     </div>
-                    <button class="console-btn" type="button">Generate team-config.glitchhuborg</button>
+                    <button class="console-btn" type="button">Generate Team Key</button>
                 </div>
             </div>
 

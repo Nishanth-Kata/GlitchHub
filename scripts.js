@@ -186,11 +186,18 @@
     var stepDuration = 5000; // auto-play step duration (5s)
     var resumeDelay = 10000; // delay to resume after user click (10s)
 
-    function updateTimeline(targetStep, isManualClick) {
-        var stepIndex = parseInt(targetStep, 10);
-        currentStepIndex = stepIndex;
+    /* ── Helpers ── */
+    function setBar(percent, durationMs) {
+        var s = durationMs + 'ms';
+        var easing = durationMs > 1000 ? 'linear' : 'cubic-bezier(0.25, 0.8, 0.25, 1)';
+        if (progressBar) {
+            progressBar.style.setProperty('--progress-transition', 'width ' + s + ' ' + easing);
+            progressBar.style.setProperty('--progress-width', percent + '%');
+        }
+    }
 
-        // Cumulative active nodes (all nodes up to stepIndex glow)
+    function activateNodeAndContent(stepIndex, targetStep) {
+        // Glow all cumulative nodes up to stepIndex
         timelineNodes.forEach(function (node) {
             var nodeVal = parseInt(node.getAttribute('data-step'), 10);
             if (nodeVal <= stepIndex) {
@@ -199,55 +206,65 @@
                 node.classList.remove('active');
             }
         });
-
-        // Toggle active viewer content state
+        // Switch viewer content
         viewerContents.forEach(function (content) {
             content.classList.remove('active');
             if (content.getAttribute('data-step-content') === targetStep) {
                 content.classList.add('active');
             }
         });
+    }
 
-        // Set transition style dynamically depending on autoplay vs manual click
-        if (progressBar) {
-            if (isManualClick) {
-                progressBar.style.setProperty('--progress-transition', 'width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)');
-                var progressPercent = ((stepIndex - 1) / (totalSteps - 1)) * 100;
-                progressBar.style.setProperty('--progress-width', progressPercent + '%');
-            } else {
-                progressBar.style.setProperty('--progress-transition', 'width 5s linear');
+    function updateTimeline(targetStep, isManualClick) {
+        var stepIndex = parseInt(targetStep, 10);
+        currentStepIndex = stepIndex;
+        // Next node position (bar fills here during this step's dwell)
+        var nextPercent = (stepIndex / (totalSteps - 1)) * 100;
+
+        if (isManualClick) {
+            // Manual click: bar snaps to current node position, node glows immediately
+            var currentPercent = ((stepIndex - 1) / (totalSteps - 1)) * 100;
+            setBar(currentPercent, 400);
+            activateNodeAndContent(stepIndex, targetStep);
+        } else {
+            // ── Autoplay: BAR-FIRST then GLOW sequence ──
+            // Activate node when bar arrives, then fill toward next node.
+            activateNodeAndContent(stepIndex, targetStep);
+
+            // After node activates, bar slowly fills toward NEXT node over 4800ms
+            setTimeout(function () {
                 if (stepIndex < totalSteps) {
-                    // Autoplay mode: fill slowly towards the NEXT step
-                    var nextPercent = (stepIndex / (totalSteps - 1)) * 100;
-                    progressBar.style.setProperty('--progress-width', nextPercent + '%');
+                    setBar(nextPercent, 4800);
                 } else {
-                    // At step 6: keep bar full (100%)
-                    progressBar.style.setProperty('--progress-width', '100%');
+                    // Last step: clamp bar to 100%
+                    setBar(100, 400);
                 }
-            }
+            }, 30);
         }
     }
 
     function resetToStepOne() {
-        if (progressBar) {
-            progressBar.style.setProperty('--progress-transition', 'width 0s');
-            progressBar.style.setProperty('--progress-width', '0%');
-        }
+        // Instantly reset bar to 0% (node01 position)
+        setBar(0, 0);
+        if (progressBar) { var _r = progressBar.offsetWidth; } // force reflow
 
+        // Reset: only node01 active
         timelineNodes.forEach(function (node) {
             var nodeVal = parseInt(node.getAttribute('data-step'), 10);
-            if (nodeVal === 1) {
-                node.classList.add('active');
-            } else {
-                node.classList.remove('active');
+            if (nodeVal === 1) { node.classList.add('active'); }
+            else { node.classList.remove('active'); }
+        });
+        // Show step 1 content
+        viewerContents.forEach(function (content) {
+            content.classList.remove('active');
+            if (content.getAttribute('data-step-content') === '1') {
+                content.classList.add('active');
             }
         });
-
-        if (progressBar) {
-            var reflow = progressBar.offsetWidth; // Force layout recalculation
-        }
-
-        updateTimeline('1', false);
+        // Bar slowly fills toward node02 position over 4800ms
+        setTimeout(function () {
+            setBar((1 / (totalSteps - 1)) * 100, 4800);
+        }, 30);
     }
 
     function startAutoPlay() {
@@ -257,7 +274,7 @@
                 var nextStep = currentStepIndex + 1;
                 updateTimeline(nextStep.toString(), false);
             } else {
-                // Reached the end (Step 6). Wait 5 seconds, snap reset, then restart loop.
+                // Reached end. Wait one interval, snap-reset, restart.
                 stopAutoPlay();
                 setTimeout(function () {
                     resetToStepOne();
@@ -280,11 +297,7 @@
             clearTimeout(userInteractionTimeout);
             userInteractionTimeout = null;
         }
-
-        // Quick snap transition on manual click
         updateTimeline(step, true);
-
-        // Resume slow progress transition after delay
         userInteractionTimeout = setTimeout(function () {
             startAutoPlay();
         }, resumeDelay);
