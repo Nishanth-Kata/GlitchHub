@@ -123,46 +123,96 @@
     }
 
     /* ---------- Latest release download links ---------- */
-    var releaseCfg = window.GLITCHHUB_RELEASE || { repo: 'Nishanth-Kata/GlitchHub', winAsset: 'GlitchHub-Setup-win.exe', macAsset: 'GlitchHub-mac-arm64.dmg' };
+    var releaseCfg = window.GLITCHHUB_RELEASE || {
+        repo: 'Nishanth-Kata/GlitchHub',
+        winAsset: 'GlitchHub-Setup-win.exe',
+        macAsset: 'GlitchHub-mac-arm64.dmg',
+        fallbackTag: 'v3.0.0-alpha.17'
+    };
     var releaseRepo = releaseCfg.repo;
     var winLink = document.querySelector('[data-download-win]');
     var macLink = document.querySelector('[data-download-mac]');
     var heroEyebrow = document.getElementById('hero-release-eyebrow');
 
-    function applyReleaseLinks(tag) {
-        var base = 'https://github.com/' + releaseRepo + '/releases/download/' + tag + '/';
-        if (winLink) {
-            winLink.href = base + releaseCfg.winAsset;
+    function applyDownloadManifest(manifest) {
+        if (!manifest) return;
+        if (winLink && manifest.windows) {
+            winLink.href = manifest.windows;
             winLink.setAttribute('download', releaseCfg.winAsset);
         }
-        if (macLink) {
-            macLink.href = base + releaseCfg.macAsset;
+        if (macLink && manifest.mac) {
+            macLink.href = manifest.mac;
             macLink.setAttribute('download', releaseCfg.macAsset);
         }
-        if (heroEyebrow && tag) {
-            heroEyebrow.textContent = '// ' + tag + ' \u00b7 intelligent workspace';
+        if (heroEyebrow && manifest.tag) {
+            heroEyebrow.textContent = '// ' + manifest.tag + ' \u00b7 intelligent workspace';
         }
     }
 
-    if (typeof glitchhubLatestDownloadUrl === 'function') {
-        if (winLink) winLink.href = glitchhubLatestDownloadUrl(releaseCfg.winAsset);
-        if (macLink) macLink.href = glitchhubLatestDownloadUrl(releaseCfg.macAsset);
+    function findAssetUrl(release, assetName) {
+        var assets = release.assets || [];
+        for (var i = 0; i < assets.length; i++) {
+            if (assets[i].name === assetName) return assets[i].browser_download_url;
+        }
+        return null;
     }
 
-    if (winLink || macLink) {
-        fetch('https://api.github.com/repos/' + releaseRepo + '/releases?per_page=15')
+    function resolveFromReleases(releases) {
+        var winUrl = null;
+        var macUrl = null;
+        var tag = null;
+        for (var i = 0; i < releases.length; i++) {
+            var r = releases[i];
+            if (r.draft) continue;
+            if (!winUrl) {
+                var w = findAssetUrl(r, releaseCfg.winAsset);
+                if (w) {
+                    winUrl = w;
+                    tag = r.tag_name;
+                }
+            }
+            if (!macUrl) {
+                var m = findAssetUrl(r, releaseCfg.macAsset);
+                if (m) {
+                    macUrl = m;
+                    if (!tag) tag = r.tag_name;
+                }
+            }
+            if (winUrl && macUrl) break;
+        }
+        if (!winUrl && !macUrl) return null;
+        return { tag: tag, windows: winUrl, mac: macUrl };
+    }
+
+    var fallback = typeof glitchhubFallbackDownloadUrls === 'function'
+        ? glitchhubFallbackDownloadUrls()
+        : null;
+    if (fallback) applyDownloadManifest(fallback);
+
+    function loadFromGitHubApi() {
+        return fetch('https://api.github.com/repos/' + releaseRepo + '/releases?per_page=30')
             .then(function (response) {
                 if (!response.ok) throw new Error('release lookup failed');
                 return response.json();
             })
             .then(function (releases) {
                 if (!releases || !releases.length) return;
-                var pick = releases.find(function (r) { return !r.draft; }) || releases[0];
-                if (pick && pick.tag_name) applyReleaseLinks(pick.tag_name);
-            })
-            .catch(function () {
-                /* keep /releases/latest/download/ fallback hrefs */
+                var manifest = resolveFromReleases(releases);
+                if (manifest) applyDownloadManifest(manifest);
             });
+    }
+
+    if (winLink || macLink) {
+        fetch('./downloads.json', { cache: 'no-store' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (json) {
+                if (json && (json.windows || json.mac)) {
+                    applyDownloadManifest(json);
+                }
+            })
+            .catch(function () { /* ignore */ })
+            .then(loadFromGitHubApi)
+            .catch(function () { /* keep fallback hrefs */ });
     }
     /* ---------- FAQ Accordion Fallback ---------- */
     var faqDetails = document.querySelectorAll('#faq details');
