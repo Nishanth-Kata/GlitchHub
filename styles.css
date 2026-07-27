@@ -570,8 +570,13 @@ a:hover {
 .brand-logo-img {
     height: 38px;
     width: auto;
+    max-width: 200px;
     object-fit: contain;
     display: block;
+    background: #000;
+    border-radius: 8px;
+    padding: 4px 8px;
+    box-sizing: content-box;
 }
 
 .brand {

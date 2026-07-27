@@ -2,6 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <script>
+        (function () {
+            var base = document.createElement('base')
+            var path = window.location.pathname
+            if (window.location.hostname.endsWith('github.io')) {
+                var segment = path.split('/').filter(Boolean)[0] || ''
+                base.href = segment ? '/' + segment + '/' : '/'
+            } else {
+                var dir = path.endsWith('/') ? path : path.replace(/\/[^/]*$/, '/')
+                base.href = dir || './'
+            }
+            document.head.appendChild(base)
+        })()
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GlitchHub – Capture, Sync &amp; Collaborate</title>
     <meta name="description" content="Capture, organize, and share visual evidence. Runs locally on your machine. Uses your own Google Drive." />
@@ -42,7 +56,7 @@
     <header class="site-header">
         <div class="container">
             <a class="brand-logo-link" href="#">
-                <img src="logo.png" alt="GlitchHub Logo" class="brand-logo-img" />
+                <img src="./logo.png" alt="GlitchHub Logo" class="brand-logo-img" width="160" height="38" />
             </a>
             <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Toggle navigation menu">
                 <span class="hamburger-box">
@@ -523,7 +537,7 @@
             <!-- Line 1: Brand + Version + Vision Badge -->
             <div class="footer-top-row">
                 <a class="brand-logo-link" href="#">
-                    <img src="logo.png" alt="GlitchHub Logo" class="brand-logo-img" />
+                    <img src="./logo.png" alt="GlitchHub Logo" class="brand-logo-img" width="160" height="38" />
                 </a>
                 <span class="logo-badge">v3.0.0</span>
                 <span class="footer-sep" aria-hidden="true">&bull;</span>
