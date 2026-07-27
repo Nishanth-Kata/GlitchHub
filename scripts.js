@@ -122,27 +122,46 @@
         yearEl.textContent = String(new Date().getFullYear());
     }
 
-    /* ---------- Latest release download links (includes pre-releases) ---------- */
-    var releaseRepo = 'Nishanth-Kata/GlitchHub';
+    /* ---------- Latest release download links ---------- */
+    var releaseCfg = window.GLITCHHUB_RELEASE || { repo: 'Nishanth-Kata/GlitchHub', winAsset: 'GlitchHub-Setup-win.exe', macAsset: 'GlitchHub-mac-arm64.dmg' };
+    var releaseRepo = releaseCfg.repo;
     var winLink = document.querySelector('[data-download-win]');
     var macLink = document.querySelector('[data-download-mac]');
+    var heroEyebrow = document.getElementById('hero-release-eyebrow');
+
+    function applyReleaseLinks(tag) {
+        var base = 'https://github.com/' + releaseRepo + '/releases/download/' + tag + '/';
+        if (winLink) {
+            winLink.href = base + releaseCfg.winAsset;
+            winLink.setAttribute('download', releaseCfg.winAsset);
+        }
+        if (macLink) {
+            macLink.href = base + releaseCfg.macAsset;
+            macLink.setAttribute('download', releaseCfg.macAsset);
+        }
+        if (heroEyebrow && tag) {
+            heroEyebrow.textContent = '// ' + tag + ' \u00b7 intelligent workspace';
+        }
+    }
+
+    if (typeof glitchhubLatestDownloadUrl === 'function') {
+        if (winLink) winLink.href = glitchhubLatestDownloadUrl(releaseCfg.winAsset);
+        if (macLink) macLink.href = glitchhubLatestDownloadUrl(releaseCfg.macAsset);
+    }
 
     if (winLink || macLink) {
-        fetch('https://api.github.com/repos/' + releaseRepo + '/releases?per_page=1')
+        fetch('https://api.github.com/repos/' + releaseRepo + '/releases?per_page=15')
             .then(function (response) {
                 if (!response.ok) throw new Error('release lookup failed');
                 return response.json();
             })
             .then(function (releases) {
                 if (!releases || !releases.length) return;
-                var tag = releases[0].tag_name;
-                var base =
-                    'https://github.com/' + releaseRepo + '/releases/download/' + tag + '/';
-                if (winLink) winLink.href = base + 'GlitchHub-Setup-win.exe';
-                if (macLink) macLink.href = base + 'GlitchHub-mac-arm64.dmg';
+                var pick = releases.find(function (r) { return !r.draft; }) || releases[0];
+                if (pick && pick.tag_name) applyReleaseLinks(pick.tag_name);
             })
             .catch(function () {
-                /* keep fallback hrefs baked into index.html */
+                /* keep /releases/latest/download/ fallback hrefs */
             });
     }
     /* ---------- FAQ Accordion Fallback ---------- */
