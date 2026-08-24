@@ -127,7 +127,7 @@
         repo: 'Nishanth-Kata/GlitchHub',
         winAsset: 'GlitchHub-Setup-win.exe',
         macAsset: 'GlitchHub-mac-arm64.dmg',
-        fallbackTag: 'v3.0.0-alpha.17'
+        fallbackTag: 'v3.1.0'
     };
     var releaseRepo = releaseCfg.repo;
     var winLink = document.querySelector('[data-download-win]');

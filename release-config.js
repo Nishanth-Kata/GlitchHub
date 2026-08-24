@@ -7,7 +7,7 @@ window.GLITCHHUB_RELEASE = {
     winAsset: 'GlitchHub-Setup-win.exe',
     macAsset: 'GlitchHub-mac-arm64.dmg',
     /** Used when GitHub API is unavailable; must match a release that has both assets */
-    fallbackTag: 'v3.0.0-alpha.17'
+    fallbackTag: 'v3.1.0'
 }
 
 function glitchhubReleaseDownloadUrl(tag, asset) {
@@ -17,7 +17,7 @@ function glitchhubReleaseDownloadUrl(tag, asset) {
 
 function glitchhubFallbackDownloadUrls() {
     var c = window.GLITCHHUB_RELEASE
-    var tag = c.fallbackTag || 'v3.0.0-alpha.17'
+    var tag = c.fallbackTag || 'v3.1.0'
     return {
         tag: tag,
         windows: glitchhubReleaseDownloadUrl(tag, c.winAsset),
