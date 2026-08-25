@@ -1,6 +1,6 @@
 {
-    "tag": "v3.2.0",
-    "windows": "https://github.com/Nishanth-Kata/GlitchHub/releases/download/v3.2.0/GlitchHub-Setup-win.exe",
-    "mac": "https://github.com/Nishanth-Kata/GlitchHub/releases/download/v3.2.0/GlitchHub-mac-arm64.dmg",
+    "tag": "v3.2.1",
+    "windows": "https://github.com/Nishanth-Kata/GlitchHub/releases/download/v3.2.1/GlitchHub-Setup-win.exe",
+    "mac": "https://github.com/Nishanth-Kata/GlitchHub/releases/download/v3.2.1/GlitchHub-mac-arm64.dmg",
     "updated": "2026-08-25"
 }
