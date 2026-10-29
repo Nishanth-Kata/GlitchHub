@@ -5,7 +5,7 @@
 window.GLITCHHUB_RELEASE = {
     repo: 'Nishanth-Kata/GlitchHub',
     winAsset: 'GlitchHub-Setup-win.exe',
-    macAsset: 'GlitchHub-mac-arm64.dmg',
+    macAsset: 'GlitchHub-mac-universal.dmg',
     /** Used when GitHub API is unavailable; must match a release that has both assets */
     fallbackTag: 'v3.1.0'
 }

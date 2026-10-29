@@ -154,6 +154,12 @@
         for (var i = 0; i < assets.length; i++) {
             if (assets[i].name === assetName) return assets[i].browser_download_url;
         }
+        if (assetName && assetName.indexOf('.dmg') !== -1) {
+            for (var j = 0; j < assets.length; j++) {
+                if (assets[j].name === 'GlitchHub-mac-universal.dmg') return assets[j].browser_download_url;
+                if (assets[j].name === 'GlitchHub-mac-arm64.dmg') return assets[j].browser_download_url;
+            }
+        }
         return null;
     }
 
