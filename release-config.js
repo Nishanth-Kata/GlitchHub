@@ -7,7 +7,7 @@ window.GLITCHHUB_RELEASE = {
     winAsset: 'GlitchHub-Setup-win.exe',
     macAsset: 'GlitchHub-mac-universal.dmg',
     /** Used when GitHub API is unavailable; must match a release that has both assets */
-    fallbackTag: 'v3.1.0'
+    fallbackTag: 'v4.0.2'
 }
 
 function glitchhubReleaseDownloadUrl(tag, asset) {
