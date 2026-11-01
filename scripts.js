@@ -164,30 +164,14 @@
     }
 
     function resolveFromReleases(releases) {
-        var winUrl = null;
-        var macUrl = null;
-        var tag = null;
         for (var i = 0; i < releases.length; i++) {
             var r = releases[i];
-            if (r.draft) continue;
-            if (!winUrl) {
-                var w = findAssetUrl(r, releaseCfg.winAsset);
-                if (w) {
-                    winUrl = w;
-                    tag = r.tag_name;
-                }
-            }
-            if (!macUrl) {
-                var m = findAssetUrl(r, releaseCfg.macAsset);
-                if (m) {
-                    macUrl = m;
-                    if (!tag) tag = r.tag_name;
-                }
-            }
-            if (winUrl && macUrl) break;
+            if (r.draft || r.prerelease) continue;
+            var winUrl = findAssetUrl(r, releaseCfg.winAsset);
+            var macUrl = findAssetUrl(r, releaseCfg.macAsset);
+            if (winUrl && macUrl) return { tag: r.tag_name, windows: winUrl, mac: macUrl };
         }
-        if (!winUrl && !macUrl) return null;
-        return { tag: tag, windows: winUrl, mac: macUrl };
+        return null;
     }
 
     var fallback = typeof glitchhubFallbackDownloadUrls === 'function'
