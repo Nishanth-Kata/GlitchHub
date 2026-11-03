@@ -70,7 +70,7 @@
                 <a href="#features">Features</a>
                 <a href="#how">How it works</a>
                 <a href="#download">Download</a>
-                <a href="#enterprise">Enterprise</a>
+                <a href="#enterprise">For Teams</a>
                 <a href="#faq">FAQ</a>
             </nav>
         </div>
@@ -129,9 +129,9 @@
                             </svg>
                         </div>
                     </div>
-                    <h3>Structured Notes Engine</h3>
+                    <h3>Evidence Capture</h3>
                     <p>
-                        Write rich documents, plan tasks, and catalog notes securely on your machine with fast local performance.
+                        Take area screenshots and screen recordings with configurable shortcuts, then attach the evidence to the task you are working on.
                     </p>
                 </div>
                 <div class="feature glass theme-blue">
@@ -142,9 +142,9 @@
                             </svg>
                         </div>
                     </div>
-                    <h3>Direct Cloud Sync</h3>
+                    <h3>Google Drive Sync &amp; Access</h3>
                     <p>
-                        Your documents and media sync straight to your own Google Drive. Enjoy the convenience of cloud storage without third-party server lock-in.
+                        Keep workspace files in your own GlitchHub Drive folder and manage access for projects, Docs, Notes, and shared items.
                     </p>
                 </div>
                 <div class="feature glass theme-green">
@@ -155,9 +155,9 @@
                             </svg>
                         </div>
                     </div>
-                    <h3>Structured Workspace</h3>
+                    <h3>Projects, Tasks &amp; Rounds</h3>
                     <p>
-                        Organize pages by folders, projects, and task hierarchies. Capture screenshots, record screen videos, and embed media files directly inside your notes.
+                        Organize QA work by project, task, and independent test rounds with rich notes, links, checklists, and attached media.
                     </p>
                 </div>
                 <div class="feature glass theme-cyan">
@@ -168,9 +168,9 @@
                             </svg>
                         </div>
                     </div>
-                    <h3>Team Workspaces</h3>
+                    <h3>Presence &amp; Admin Controls</h3>
                     <p>
-                        Create shared workspaces for your team. IT administrators can pre-configure shared cloud folder paths and permissions so team members sync to the same Workspace.
+                        Invite members with an admin-shared code, manage roles and approved guests, and see who is online, idle, or offline.
                     </p>
                 </div>
             </div>
@@ -195,9 +195,9 @@
                         <span>01</span>
                         <span class="node-label">Download</span>
                     </button>
-                    <button class="timeline-node" data-step="2" type="button" aria-label="Step 2: Connect workspace key">
+                    <button class="timeline-node" data-step="2" type="button" aria-label="Step 2: Enter invitation code">
                         <span>02</span>
-                        <span class="node-label">Team Key</span>
+                        <span class="node-label">Invitation Code</span>
                     </button>
                     <button class="timeline-node" data-step="3" type="button" aria-label="Step 3: Account integration">
                         <span>03</span>
@@ -254,9 +254,9 @@
                         </svg>
                     </div>
                     <div class="viewer-text">
-                        <span class="step-tag">// 02 &middot; TEAM CONFIGURATION</span>
-                        <h3>Link Team Key (Optional)</h3>
-                        <p>If you are setting up GlitchHub for personal documents, skip this step. If joining a corporate workspace, import the <code>.glitchhuborg</code> configuration file provided by your company admin to auto-configure folder structures.</p>
+                        <span class="step-tag">// 02 &middot; TEAM INVITATION</span>
+                        <h3>Enter Your Invitation Code</h3>
+                        <p>Enter the invitation code shared by your GlitchHub admin. The app validates the code before continuing to Google sign-in and workspace setup.</p>
                     </div>
                 </div>
 
@@ -396,9 +396,9 @@
         <div class="enterprise-wrapper">
         <div class="container reveal">
             <p class="section-label">// 04 &middot; for teams</p>
-            <h2>Enterprise Deployment Guide</h2>
+            <h2>Set Up Your Team Workspace</h2>
             <p class="section-lede">
-                Deploy GlitchHub across your organization using your company's own Google Workspace OAuth client. Maintain absolute control over data access, usage policies, and sync auditing.
+                The admin configures the workspace, shares one invitation code, and manages roles, approved guests, and Drive access from GlitchHub.
             </p>
         </div>
         <div class="container enterprise-split reveal">
@@ -424,15 +424,15 @@
                     </div>
                     <div class="console-field" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
                         <div>
-                            <label class="console-label" style="margin-bottom: 0.15rem;">Workspace Target</label>
-                            <span style="color: #ffffff; font-size: 0.85rem;">Google Drive Team Shared Folder</span>
+                            <label class="console-label" style="margin-bottom: 0.15rem;">Workspace Storage</label>
+                            <span style="color: #ffffff; font-size: 0.85rem;">Each member's GlitchHub Drive folder</span>
                         </div>
                         <div class="status-indicator">
                             <span class="status-dot"></span>
                             <span>Connected</span>
                         </div>
                     </div>
-                    <button class="console-btn" type="button">Generate Team Key</button>
+                    <button class="console-btn" type="button">Generate Invitation Code</button>
                 </div>
             </div>
 
@@ -440,27 +440,27 @@
                 <li class="timeline-item theme-purple">
                     <span class="timeline-badge">01</span>
                     <div class="timeline-content">
-                        <h3>1. Configure Console</h3>
+                        <h3>1. Configure Google OAuth</h3>
                         <p>
-                            Create a Desktop OAuth Client ID inside your company’s Google Cloud Console. Authorize redirect URIs pointing to loopback address: <code>http://127.0.0.1:49152/auth/google/callback/sqlite</code>.
+                            Add the workspace Google OAuth Client ID and Client Secret in GlitchHub, with the app's loopback callback URI authorized in Google Cloud Console.
                         </p>
                     </div>
                 </li>
                 <li class="timeline-item theme-blue">
                     <span class="timeline-badge">02</span>
                     <div class="timeline-content">
-                        <h3>2. Build Team Key</h3>
+                        <h3>2. Create an Invitation Code</h3>
                         <p>
-                            Use the configuration utility inside GlitchHub to bundle your Client ID, email domains, and workspace folders into a secure, encrypted <code>.glitchhuborg</code> configuration file.
+                            Generate the shared code in Admin Controls. Add approved guest email addresses when external Google accounts need access.
                         </p>
                     </div>
                 </li>
                 <li class="timeline-item theme-cyan">
                     <span class="timeline-badge">03</span>
                     <div class="timeline-content">
-                        <h3>3. Deploy Workstations</h3>
+                        <h3>3. Invite and Manage Members</h3>
                         <p>
-                            Silently push the installer to endpoints using your MDM provider. Distribute the configuration package (or GPO deploy key) to automatically setup users on launch.
+                            Share the code with members. They enter it, sign in with Google, and connect their own GlitchHub folder in Drive. The admin can later change roles or revoke access.
                         </p>
                     </div>
                 </li>
@@ -482,7 +482,7 @@
                     </span>
                 </summary>
                 <p>
-                    All your notes, screenshots, and test evidence are stored locally on your machine and synced directly to your own Google Drive storage. We run zero database servers—no third party ever has access to your credentials or files.
+                    Workspace notes and media stay on your device and in the connected GlitchHub folder in Google Drive. Cloudflare stores the workspace account, membership, access-policy, invitation, and presence metadata needed for team controls. Google credentials remain secured on the local device.
                 </p>
             </details>
             <details class="faq-item" name="faq">
@@ -493,29 +493,29 @@
                     </span>
                 </summary>
                 <p>
-                    No. GlitchHub is completely serverless. You can use your existing free Google Account (15GB included storage) or your company’s Google Workspace plan without any subscription fees or third-party cloud lock-in.
+                    No GlitchHub subscription is required. You can use an existing Google Account or your company's Google Workspace access. Internet is needed for sign-in, membership checks, presence, and Drive sync, while local work remains available offline.
                 </p>
             </details>
             <details class="faq-item" name="faq">
                 <summary>
-                    <span>How does authentication work? Can we use custom Google OAuth?</span>
+                    <span>How does a teammate join a workspace?</span>
                     <span class="faq-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                     </span>
                 </summary>
                 <p>
-                    GlitchHub uses secure OAuth 2.0 loopback authentication (<code>127.0.0.1:49152</code>). Tokens are stored encrypted in your local SQLite database at <code>%APPDATA%\GlitchHub\db\auth.db</code>. Enterprise teams can also import a custom <code>.glitchhuborg</code> config to route authentication through their own Google Cloud Console OAuth Client.
+                    The admin shares an invitation code. The teammate enters it in GlitchHub, signs in with Google, and connects their own GlitchHub folder in Drive. External accounts must also be added as approved guests by the admin.
                 </p>
             </details>
             <details class="faq-item" name="faq">
                 <summary>
-                    <span>How does GlitchHub handle network connectivity and ports?</span>
+                    <span>What permission does the capture tool need?</span>
                     <span class="faq-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                     </span>
                 </summary>
                 <p>
-                    GlitchHub runs as a standalone desktop application. You can write documentation, capture media, and organize tasks continuously. Background synchronization keeps your data safe while the local client operates on loopback port <code>127.0.0.1:49152</code>.
+                    On macOS, GlitchHub needs Screen &amp; System Audio Recording permission for screenshots and recordings. Approve the installed Applications copy, then fully quit and reopen GlitchHub. Windows uses its normal desktop capture flow.
                 </p>
             </details>
             <details class="faq-item" name="faq">
@@ -526,7 +526,7 @@
                     </span>
                 </summary>
                 <p>
-                    GlitchHub automatically checks for new releases on startup. When an update is detected, an in-app notification banner allows you to click <strong>Update & Restart</strong>. You can also manually trigger an update check anytime via <strong>Settings &rarr; Check for updates</strong>.
+                    GlitchHub checks GitHub Releases for new versions and shows an in-app update notification. Windows can use the installer flow. On macOS, download the new DMG and replace the existing GlitchHub app in Applications. You can also check manually from <strong>Settings &rarr; Updates</strong>.
                 </p>
             </details>
         </div>
