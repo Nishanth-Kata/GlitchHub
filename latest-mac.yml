@@ -1,15 +1,15 @@
 version: 4.2.2-staging
 files:
   - url: GlitchHub-Staging-mac-universal.zip
-    sha512: 7cZtbXpdjKk+BsHJ7wtoeDI812T9MrunSZY74eYPld/NPnXfo1lbufY7NbU/9pY9e2iXfZgSTHPjzQa2PQy+TQ==
-    size: 207145141
+    sha512: siYcYO/pR9CGVIjNhFSj8qSl7a0KJCEoehnB3h/H2DpyGHW/SDSfjBSWLJHvmioaDPMM1qYRwUqXEVIcw/en1A==
+    size: 206459358
 path: GlitchHub-Staging-mac-universal.zip
-sha512: 7cZtbXpdjKk+BsHJ7wtoeDI812T9MrunSZY74eYPld/NPnXfo1lbufY7NbU/9pY9e2iXfZgSTHPjzQa2PQy+TQ==
-releaseDate: '2026-11-16T15:27:00.020Z'
+sha512: siYcYO/pR9CGVIjNhFSj8qSl7a0KJCEoehnB3h/H2DpyGHW/SDSfjBSWLJHvmioaDPMM1qYRwUqXEVIcw/en1A==
+releaseDate: '2026-11-16T16:10:26.790Z'
 platform: darwin
 arch: universal
 channel: staging
 releaseId: staging-v4.2.2-staging
 file: GlitchHub-Staging-mac-universal.zip
-size: 207145141
-signature: zkqoa2LYkBCgYXdSrOGxW9glqkYJMNHCqwX2WdCOmZCXTRyroSY5cg/1sGVgA/7TKUcUa/SlXwHyApYxTjQHAw==
+size: 206459358
+signature: X8cZoq+h5h11w4eAfl2euO1R8IlIil8dEy2OdShhlPxzk48PrSu0zrk6FRJsdKj9Nk6Nc4TettEkwXv07WksCQ==
